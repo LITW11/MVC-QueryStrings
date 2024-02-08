@@ -1,0 +1,46 @@
+﻿@using WebApplication8.Models
+@model OrdersByYearViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Order Date</th>
+                            <th>Ship Name</th>
+                            <th>Ship Address</th>
+                            <th>Ship Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Order order in Model.Orders)
+                        {
+                            <tr data-order-id="foo-@order.Id">
+                                <td>@order.Id</td>
+                                <td>@order.OrderDate.ToShortDateString()</td>
+                                <td>@order.ShipName</td>
+                                <td>@order.ShipAddress</td>
+                                <td>@order.ShipCountry</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
